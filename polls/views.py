@@ -6,6 +6,11 @@ from django.views import generic
 from .models import Choice, Question, Suggestion
 from django.utils import timezone
 
+def index(request):
+    latest_question_list = Question.objects.order_by('-pub_date')[:5]
+    context = {'latest_question_list': latest_question_list}
+    return render(request, 'polls/index.html', context)
+
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
@@ -14,6 +19,10 @@ class IndexView(generic.ListView):
     def get_queryset(self):
             return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
 
+
+def detail(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    return render(request, 'polls/detail.html', {'question': question})
 
 class DetailView(generic.DetailView):
     model = Question
