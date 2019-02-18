@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load bootstrap4 %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Suggestions</title>
+</head>
+<body>
+<h1>Add a suggestion</h1>
+
+{% if error_message %}<p><strong>{{error_message}}</strong></p>{% endif %}
+
+<form action="{% url 'polls:add_suggestions' %}" method="post">
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Name</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Suggestion</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Suggestion">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+</body>
+</html>

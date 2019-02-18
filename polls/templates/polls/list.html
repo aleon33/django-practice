@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Suggestion List</title>
+</head>
+<body>
+<h1>Suggestion List</h1>
+
+{%if latest_suggestion_list %}
+    <ul>
+        {%for suggestion in latest_suggestion_list %}
+            <li>{{suggestion.name }} : {{ suggestion.suggestion_text}}</li>
+        {%endfor%}
+    </ul>
+{% else %}
+    <p>No suggestions are available</p>
+{%endif%}
+</body>
+</html>
